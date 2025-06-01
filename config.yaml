@@ -1,0 +1,37 @@
+# --- Configuration for the Video Processing Pipeline ---
+
+# --- Path Settings ---
+# Option 1: Define relative to where the main script is run, or make them absolute.
+# For this example, we assume 'data' and 'output_data' are siblings to 'main.py'
+# or in the current working directory when main.py is executed.
+# It's often more robust to construct absolute paths in main.py based on script location.
+
+input_video_path: "/Volumes/T9/Projects/new_synchronization_proj/data/VIDEO/Original/MOV/test.mov" # IMPORTANT: Change to your video
+base_output_folder: "output_data"                    # Base directory for all outputs
+
+# Tracker configuration file (e.g., for ByteTrack)
+# Ensure this file exists. You might need to copy it from ultralytics defaults
+# or provide an absolute path.
+tracker_config: "data/bytetrack.yaml"
+
+# --- Video Processing Parameters ---
+target_fps: 25                # Target FPS for video conversion (null or omit to keep original if possible)
+segment_duration: 300         # Segment duration in seconds (e.g., 300 for 5 minutes)
+stabilization_border_type: "black" # Options: 'black', 'reflect', 'replicate', 'custom' (with border_size)
+
+# --- Model Configurations ---
+# Ensure model files are downloaded or accessible (e.g., yolov11x-pose.pt)
+# Ultralytics will attempt to download if not found locally and a standard name is used.
+yolo_model_path: "yolov11x-pose.pt"
+midas_model_type: "DPT_Large"   # Options: DPT_Large, DPT_Hybrid, MiDaS_small etc.
+
+# --- YOLO and Analysis Settings ---
+yolo_conf: 0.5                # Confidence threshold for YOLO detections
+yolo_iou: 0.45                # IoU threshold for YOLO Non-Max Suppression
+yolo_classes: [0]             # List of class indices to track (e.g., [0] for 'person' in COCO)
+half_precision: true          # true/false: Use FP16 for models if GPU is available (auto-set to false if no CUDA)
+downscale_factor: 1.0         # Downscale factor for frames sent to MiDaS (1.0 = no downscale)
+                              # e.g., 0.5 for half resolution. Affects depth estimation speed vs. accuracy.
+
+# --- Pipeline Behavior ---
+cleanup_intermediate_folders: false # true/false: Remove intermediate folders (1_converted, 2_sliced, etc.) after run

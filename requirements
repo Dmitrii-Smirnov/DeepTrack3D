@@ -1,0 +1,16 @@
+# Configuration file parsing
+PyYAML>=6.0
+
+# Core Deep Learning and Computer Vision
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+opencv-python>=4.7.0 # For cv2
+numpy>=1.23.0
+timm>=0.9.0         # PyTorch Image Models - often a dependency for advanced vision models like MiDaS backbones
+
+# Video Processing Utilities
+moviepy>=1.0.3      # For video slicing
+vidstab>=1.0.2      # For video stabilization
+
+# Other direct dependencies can be added here if identified
