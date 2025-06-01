@@ -6,7 +6,7 @@
 # or in the current working directory when main.py is executed.
 # It's often more robust to construct absolute paths in main.py based on script location.
 
-input_video_path: "/Volumes/T9/Projects/new_synchronization_proj/data/VIDEO/Original/MOV/test.mov" # IMPORTANT: Change to your video
+input_video_path: "/Users/dmitrijsmirnov/Desktop/Projects/Python/DeepTrack3D/data/input_videos/test.mov" # IMPORTANT: Change to your video
 base_output_folder: "output_data"                    # Base directory for all outputs
 
 # Tracker configuration file (e.g., for ByteTrack)
